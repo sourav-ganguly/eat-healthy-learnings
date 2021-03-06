@@ -31,4 +31,20 @@ firstly {
 }
 ```
 
+### Common Syntaxes: 
+
+#### then and done:
+then and done are kinda like completion handlers. But the difference is that we can use them to chain multiple async calls or other operators like error handling. It is also great for readablity. 
+
+Code:
+```swift
+firstly {
+    login()
+}.then { creds in
+    fetch(avatar: creds.user)
+}.done { image in
+    self.imageView = image
+}
+```
+
 ## Xcode Build Configuration Files
