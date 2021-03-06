@@ -46,4 +46,19 @@ firstly {
 }
 ```
 
+**catch**: catch is closure for error handling. What is interesting here is that the catch closure catches all the errors of the whole chain. 
+
+Example:
+```swift
+firstly {
+    login()
+}.then { creds in
+    fetch(avatar: creds.user)
+}.done { image in
+    self.imageView = image
+}.catch {
+    // any errors in the whole chain land here
+}
+```
+
 ## Xcode Build Configuration Files
