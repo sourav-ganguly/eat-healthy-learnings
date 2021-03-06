@@ -31,12 +31,11 @@ firstly {
 }
 ```
 
-### Common Syntaxes: 
+### Common Syntax: 
 
-#### then and done:
-then and done are kinda like completion handlers. But the difference is that we can use them to chain multiple async calls or other operators like error handling. It is also great for readablity. 
+**then and done**: then and done are kinda like completion handlers. But the difference is that we can use them to chain multiple async calls or other operators like error handling. It is also great for readablity. 
 
-Code:
+Example:
 ```swift
 firstly {
     login()
