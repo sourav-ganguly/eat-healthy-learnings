@@ -13,7 +13,7 @@ Advantage of using PromiseKit over traditional iOS async programming is:
 
 Example: 
 
-```
+```swift
 UIApplication.shared.isNetworkActivityIndicatorVisible = true
 
 let fetchImage = URLSession.shared.dataTask(.promise, with: url).compactMap{ UIImage(data: $0.data) }
