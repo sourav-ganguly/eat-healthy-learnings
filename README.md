@@ -2,7 +2,8 @@
 
 ## PromiseKit
 
-**PromiseKit** is a library that helps with asynchronous programming in swift and Objective-C. It is explained as "PromiseKit is a thoughtful and complete implementation of promises" in the official doc.
+**PromiseKit** is a library that helps with asynchronous programming in swift and Objective-C. It is a wrapper around async task. Instead of using completion and error handler, a method can return a Promise.
+It is explained as "PromiseKit is a thoughtful and complete implementation of promises" in the official doc.
 
 Advantage of using PromiseKit over traditional iOS async programming is:
 * Cleaner and readable code
@@ -112,6 +113,34 @@ firstly {
     login()
 }.then { creds in
     //…
+}
+```
+
+**Creating a promise**:
+```swift
+func getWeather(
+  atLatitude latitude: Double, 
+  longitude: Double
+) -> Promise<WeatherInfo> {
+  return Promise { seal in
+    let urlString = "http://api.openweathermap.org/data/2.5/weather?" +
+      "lat=\(latitude)&lon=\(longitude)&appid=\(appID)"
+    let url = URL(string: urlString)!
+
+    URLSession.shared.dataTask(with: url) { data, _, error in
+      guard let data = data,
+            let result = try? JSONDecoder().decode(WeatherInfo.self, from: data) else {
+        let genericError = NSError(
+          domain: "PromiseKitTutorial",
+          code: 0,
+          userInfo: [NSLocalizedDescriptionKey: "Unknown error"])
+        seal.reject(error ?? genericError)
+        return
+      }
+
+      seal.fulfill(result)
+    }.resume()
+  }
 }
 ```
 
