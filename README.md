@@ -8,7 +8,9 @@ It is explained as "PromiseKit is a thoughtful and complete implementation of pr
 Advantage of using PromiseKit over traditional iOS async programming is:
 * Cleaner and readable code
 * Quick learning carve 
-* Very easy to call multiple async functions and managing it.
+* Very easy to call multiple async functions and managing it
+* Save us from Callbacks Pyramid of Doom. Nested callbacks are now in chain.
+* Error Handling is separated. Duplicate multiple error handlings are in one place.
 
 Example: 
 
@@ -143,5 +145,33 @@ func getWeather(
   }
 }
 ```
+
+**Treading**: By default all PromiseKit handlers run on main queue. All handler take a on parameter where you can specify the queue.
+
+Example:
+```swift
+class MyRestAPI {
+    func avatar() -> Promise<UIImage> {
+        let bgq = DispatchQueue.global(qos: .userInitiated)
+
+        return firstly {
+            user()
+        }.then(on: bgq) { user in
+            URLSession.shared.dataTask(.promise, with: user.imageUrl)
+        }.compactMap(on: bgq) {
+            UIImage(data: $0)
+        }
+    }
+}
+```
+
+**Do I need to use [weak self] in PromiseKit block?**
+"Generally, no. Once a promise completes, all handlers are released and so any references to self are also released." Details: https://github.com/mxcl/PromiseKit/blob/master/Documentation/FAQ.md#do-i-need-to-worry-about-retain-cycles
+
+
+Thanks and additional resources:
+* https://github.com/mxcl/PromiseKit/tree/master/Documentation
+* https://agostini.tech/2018/10/08/using-promisekit/
+* https://www.raywenderlich.com/9208-getting-started-with-promisekit
 
 ## Xcode Build Configuration Files
