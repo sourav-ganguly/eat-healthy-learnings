@@ -146,7 +146,7 @@ func getWeather(
 }
 ```
 
-**Treading**: By default all PromiseKit handlers run on main queue. All handler take a on parameter where you can specify the queue.
+**Threading**: By default all PromiseKit handlers run on main queue. All handler take a on parameter where you can specify the queue.
 
 Example:
 ```swift
