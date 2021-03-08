@@ -88,7 +88,7 @@ firstly {
 }
 ```
 
-**map, compactMap etc** The PromiseKit also included this and some other functional methods methods. This methods are used to change the result of promise. This methods make the code more readble and compact. 
+**map, compactMap etc**: The PromiseKit also included this and some other functional methods methods. This methods are used to change the result of promise. This methods make the code more readble and compact. 
 
 Example:
 ```swift
@@ -104,5 +104,15 @@ firstly {
 }
 ```
 
+**firstly**: firstly does not do anything actually. It is a syntactic sugar. It just make the code more readable.
+
+Example:
+```swift
+firstly {
+    login()
+}.then { creds in
+    //…
+}
+```
 
 ## Xcode Build Configuration Files
