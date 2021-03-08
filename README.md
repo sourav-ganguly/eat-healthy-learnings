@@ -87,4 +87,22 @@ firstly {
     //…
 }
 ```
+
+**map, compactMap etc** The PromiseKit also included this and some other functional methods methods. This methods are used to change the result of promise. This methods make the code more readble and compact. 
+
+Example:
+```swift
+firstly {
+    URLSession.shared.dataTask(.promise, with: rq)
+}.compactMap {
+    try JSONSerialization.jsonObject($0.data) as? [String]
+}.done { arrayOfStrings in
+    //…
+}.catch { error in
+    // Foundation.JSONError if JSON was badly formed
+    // PMKError.compactMap if JSON was of different type
+}
+```
+
+
 ## Xcode Build Configuration Files
