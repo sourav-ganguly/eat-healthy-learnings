@@ -61,4 +61,22 @@ firstly {
 }
 ```
 
+**ensure**: ensure closure is called no matter the promise succeed or failed. We should must called codes inside ensure clause.
+
+Example: 
+```swift
+firstly {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    return login()
+}.then {
+    fetch(avatar: $0.user)
+}.done {
+    self.imageView = $0
+}.ensure {
+    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+}.catch {
+    //…
+}
+```
+
 ## Xcode Build Configuration Files
