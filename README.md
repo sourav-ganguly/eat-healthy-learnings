@@ -1,5 +1,3 @@
-# Eat_Healthy_Learnings
-
 ## VIPER Architecture
 
 ## PromiseKit
