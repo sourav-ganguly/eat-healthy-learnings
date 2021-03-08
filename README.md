@@ -79,4 +79,14 @@ firstly {
 }
 ```
 
+**when**: parallel multiple async call is so much easier with promise. when takes multiple promises and wait for them to end and return a promise containing the results.
+
+Example:
+```swift
+firstly {
+    when(fulfilled: operation1(), operation2())
+}.done { result1, result2 in
+    //…
+}
+```
 ## Xcode Build Configuration Files
