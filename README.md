@@ -6,8 +6,8 @@
 
 Advantage of using PromiseKit over traditional iOS async programming is:
 * Cleaner and readable code
-* Easy learning carve 
-* Easier and cleaner syntax when work with multiple asynchronous call
+* Quick learning carve 
+* Very easy to call multiple async functions and managing it.
 
 Example: 
 
