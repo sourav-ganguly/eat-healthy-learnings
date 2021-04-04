@@ -8,6 +8,10 @@ VIPER architecture consists of five layers of components. Each of the letters of
 4. **Entity (Model):** This layers comprises of the Stucts and Classes to represent the data used by the App.
 5. **Router (Coordinator):** This layer manages all the navigation logic of the App.
 
+
+thanks:
+* https://github.com/nodes-ios/Playbook/blob/master/ViperArchitecture.md
+
 ## PromiseKit
 
 **PromiseKit** is a library that helps with asynchronous programming in swift and Objective-C. It is a wrapper around async task. Instead of using completion and error handler, a method can return a Promise.
