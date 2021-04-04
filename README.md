@@ -182,7 +182,7 @@ class MyRestAPI {
 
 
 Thanks and additional resources:
-* https://github.com/mxcl/PromiseKit/tree/master/Documentation
+* https://github.com/mxcl/PromiseKit/tree/master/Documentation (all my examples are copied from this Doc. This doc is fantasic, please take a look)
 * https://agostini.tech/2018/10/08/using-promisekit/
 * https://www.raywenderlich.com/9208-getting-started-with-promisekit
 
